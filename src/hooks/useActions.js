@@ -1,10 +1,12 @@
 import { useMemo } from 'react'
 import { useDispatch } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { actions } from '../store/favorites/favorites.slice'
+import { actions as favAction } from '../store/favorites/favorites.slice'
+import  * as userActions  from '../store/user/user.actions'
 
 const rootActions = {
-	...actions,
+	...favAction,
+	...userActions
 }
 
 export const useActions = () => {

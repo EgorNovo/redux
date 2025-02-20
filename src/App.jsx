@@ -1,31 +1,22 @@
-import { useSelector } from 'react-redux'
-import RecipeItem from "./recipe-item/recipe-item";
+import { Header } from "./components/header/header";
+import RecipeItem from "./components/recipe-item/recipe-item";
+import User from "./components/user/user";
+import { useGetRecipesQuery } from "./store/api/api";
 
 function App() {
-
-  const {favorites} = useSelector(store => store)
+const { isLoading, data } = useGetRecipesQuery();
 
   return (
     <div>
-      <span> Count my favorites recipes: {favorites.length}</span>
-      <RecipeItem
-        recipe={{
-          id: 1,
-          name: "Лазанья",
-        }}
-      />
-      <RecipeItem
-        recipe={{
-          id: 2,
-          name: "Каша",
-        }}
-      />
-      <RecipeItem
-        recipe={{
-          id: 3,
-          name: "Суп",
-        }}
-      />
+      <User />
+      <div></div>
+      <Header />
+
+      {isLoading ? (
+        <div>...Loading</div>
+      ) : (
+        data.map((item, i) => <RecipeItem key={i} recipe={item} />)
+      )}
     </div>
   );
 }

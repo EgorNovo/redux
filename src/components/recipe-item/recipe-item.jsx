@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useSelector } from "react-redux";
+import { useActions } from "../../hooks/useActions";
 import styles from "./recipe-item.module.css";
-import { useActions } from '../hooks/useActions'
 
 const RecipeItem = ({ recipe }) => {
   const favorites = useSelector((state) => state.favorites);
