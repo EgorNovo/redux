@@ -1,3 +1,4 @@
+import CreateRecipe from './components/create-recipe/create-recipe'
 import { Header } from "./components/header/header";
 import RecipeItem from "./components/recipe-item/recipe-item";
 import User from "./components/user/user";
@@ -11,7 +12,7 @@ const { isLoading, data } = useGetRecipesQuery();
       <User />
       <div></div>
       <Header />
-
+      <CreateRecipe />
       {isLoading ? (
         <div>...Loading</div>
       ) : (
